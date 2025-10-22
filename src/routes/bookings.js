@@ -11,7 +11,6 @@ const router = Router();
  * Handles booking form submissions.
  *  - Validates inputs
  *  - Saves booking to MongoDB
- *  - Sends confirmation email via Zoho SMTP
  */
 router.post(
   "/",
@@ -32,7 +31,7 @@ router.post(
     const { name, email, phone, date, time, topic, message } = req.body;
 
     try {
-      // ✅ Save booking data
+      //  Save booking data
       const booking = await Booking.create({
         name,
         email,
@@ -43,12 +42,12 @@ router.post(
         message,
       });
 
-      console.log(`✅ New booking stored in MongoDB for ${name} (${email})`);
+      console.log(` New booking stored in MongoDB for ${name} (${email})`);
 
-      // ✅ Send confirmation email
+      // Send confirmation email
  await sendBookingEmail({
   name: String(name).trim(),
-  email: String(email).trim(),   // ✅ pass correct key
+  email: String(email).trim(),   
   phone: phone || "N/A",
   date: date || "N/A",
   time: time || "N/A",
@@ -64,7 +63,7 @@ router.post(
           "Your booking has been received successfully. A confirmation email has been sent.",
       });
     } catch (err) {
-      console.error("❌ Booking submission failed:", err);
+      console.error(" Booking submission failed:", err);
       return res.status(500).json({
         ok: false,
         message: "Server error creating booking. Please try again later.",
