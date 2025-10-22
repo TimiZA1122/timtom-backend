@@ -1,10 +1,7 @@
 import mongoose from "mongoose";
 
 /**
- * Booking Schema
- * ----------------
  * Stores booking information submitted from the website contact/booking form.
- * Each entry includes basic client details, service info, and timestamps.
  */
 
 const BookingSchema = new mongoose.Schema(
@@ -47,7 +44,7 @@ const BookingSchema = new mongoose.Schema(
   }
 );
 
-// Optional: helpful virtual field for displaying formatted info
+
 BookingSchema.virtual("summary").get(function () {
   return `${this.name} - ${this.topic || "General"} (${this.date || "TBD"})`;
 });
