@@ -2,12 +2,12 @@ import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 
-// ✅ Ensure dotenv loads from the correct folder, even if Node runs elsewhere
+// Makes dotenv loads from the correct folder
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, ".env") });
 
-console.log("✅ Loaded ENV from:", path.join(__dirname, ".env"));
+console.log(" Loaded ENV from:", path.join(__dirname, ".env"));
 console.log("SMTP_USER:", process.env.SMTP_USER);
 console.log("SMTP_PASS:", process.env.SMTP_PASS ? "LOADED" : "MISSING");
 
@@ -43,7 +43,7 @@ app.use(
       // allow non-browser clients (curl, postman)
       if (!origin) return callback(null, true);
       if (allowedOrigins.includes(origin)) return callback(null, true);
-      console.warn(`⚠️  Blocked CORS request from: ${origin}`);
+      console.warn(` Blocked CORS request from: ${origin}`);
       return callback(new Error(`Origin ${origin} not allowed by CORS`));
     },
   })
@@ -66,13 +66,13 @@ mongoose.set("strictQuery", true);
 mongoose
   .connect(MONGO_URI)
   .then(() => {
-    console.log("✅ MongoDB connected successfully");
+    console.log("MongoDB connected successfully");
     app.listen(PORT, () => {
-      console.log(`🚀 Server running at http://localhost:${PORT}`);
+      console.log(` Server running at http://localhost:${PORT}`);
     });
   })
   .catch((err) => {
-    console.error("❌ MongoDB connection failed:", err.message);
+    console.error(" MongoDB connection failed:", err.message);
     process.exit(1);
   });
 
