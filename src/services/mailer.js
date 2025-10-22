@@ -27,8 +27,8 @@ const transporter = nodemailer.createTransport({
 
 // --- Verify connection on startup ---
 transporter.verify((err) => {
-  if (err) console.error("❌ SMTP verification failed:", err.message);
-  else console.log("✅ SMTP server verified and ready");
+  if (err) console.error(" SMTP verification failed:", err.message);
+  else console.log(" SMTP server verified and ready");
 });
 
 // --- Email Function ---
@@ -81,9 +81,9 @@ export async function sendBookingEmail(booking) {
 
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log(`✅ Email sent successfully to ${email} (and copied to admin)`);
+    console.log(` Email sent successfully to ${email} (and copied to admin)`);
     console.log("Message ID:", info.messageId);
   } catch (err) {
-    console.error("❌ Email send failed:", err);
+    console.error(" Email send failed:", err);
   }
 }
