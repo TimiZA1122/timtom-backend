@@ -27,8 +27,12 @@ const defaultOrigins = [
   "http://localhost:5500",
   "http://localhost:5501",
   "http://localhost:5173",
-  "http://127.0.0.1:5173"
+  "http://127.0.0.1:5173",
+  "https://timtomhealthcare.com",
+  "https://www.timtomhealthcare.com",
+  "https://timtomhealthcare.netlify.app"
 ];
+
 
 const extra = (process.env.CLIENT_ORIGIN || "")
   .split(",")
